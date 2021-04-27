@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp1.Models;
+using System;
 
 namespace ConsoleApp1
 {
@@ -6,7 +7,19 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var estudiante = new Estudiante
+            {
+                Apellido = "Perez",
+                FechaNacimiento = DateTime.Now,
+                Name = "Juan"
+            };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Add(estudiante);
+                ctx.SaveChanges();
+            }
+
         }
     }
 }

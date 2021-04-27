@@ -15,7 +15,14 @@ namespace ConsoleApp1.Models
 				.UseLoggerFactory(MyLoggerFactory);
 		}
 
-		public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+			modelBuilder.Entity<Estudiante>().Property(x => x.Apellido).HasField("_apellido");
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>
 		{
 			builder
 			   .AddFilter((category, level) =>
