@@ -11,6 +11,7 @@ namespace ConsoleApp1.Models
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer(@"Server=DESKTOP-3OTPLG0\SQLINSTANCE;Database=EFCourse;User Id=sa;Password=Salmo091;")
+				.UseLazyLoadingProxies()
 				.EnableSensitiveDataLogging(true)
 				.UseLoggerFactory(MyLoggerFactory);
 		}
